@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../Js/vue.js"></script>
+    <title>Khóa Học Vue JS - Event-keyboard</title>
+</head>
+<body>
+    <div id="obj">
+        <!-- <input type="text" v-on:keyup="keyboard"> -->
+        <!-- <input type="text" v-on:keyup.enter="keyboard"> -->
+        <!-- <input type="text" v-on:keyup.enter.space="keyboard"> -->
+        <!-- <input type="text" v-on:keyup.enter.space....etc..="keyboard"> -->
+        <input type="text" @keyup.enter.space="keyboard">
+    </div>
+    <script>
+        new Vue({
+            el: '#obj',
+            data() {
+                return {
+                    
+                }
+            },
+            methods: {
+                keyboard:function(){
+                    alert("hello baby");
+                }
+            },
+        })
+    </script>
+</body>
+</html>

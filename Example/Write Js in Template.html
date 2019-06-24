@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../Js/vue.js"></script>
+    <title>Khóa Học Vue JS - Write Js in Template</title>
+</head>
+<body>
+    <div id="obj">
+        <p>Nhấn nút để đếm</p>
+        <button v-on:click="demgiatri">Press</button>
+        <p>Giá Trị: {{dem}}</p>
+        <!-- xử lý Js trực tiếp trong template -->
+        <button v-on:click=dem++>Press Follow Javascript</button>
+        <p>Giá Trị: {{dem > 20 ? 'Bạn đã bấm quá số lần quy định' : 'Bấm tiếp đê bạn ơi'}}</p>
+        
+
+    </div>
+    <script>
+        new Vue({
+            el: '#obj',
+            data() {
+                return {
+                    dem: 0,
+                }
+            },
+            methods: {
+                demgiatri:function(){
+                    this.dem++;
+                }
+            },
+        })
+    </script>
+</body>
+</html>

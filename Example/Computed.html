@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../Js/vue.js"></script>
+    <title>Khóa Học Vue JS - Computed Basic</title>
+</head>
+<body>
+    <div id="obj">
+        <p>Tăng giá trị A: {{ tanga }}</p>
+        <p>Tăng giá trị B: {{ tangb }}</p>
+        <button v-on:click=a++>Press Add A</button>
+        <button @click=b++>Press Add B</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#obj',
+            data() {
+                return {
+                    a: 0,
+                    b: 0,
+                }
+            },
+            //computed là một property và bên trong nó sinh ra các function để hoạt động giống như method 
+            //nhưng nó không được gọi là một function.
+            computed: {
+                tanga:function(){
+                    console.log('Bạn đang tăng A lên 1');
+                    return this.a;
+                },
+                tangb:function(){
+                    console.log('Bạn đang tăng B lên 1');
+                    return this.b;
+                }
+            },
+            //computed chạy trước method
+            methods: {
+                
+            },
+        })
+    </script>
+</body>
+</html>

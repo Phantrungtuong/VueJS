@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../Js/vue.js"></script>
+    <title>Khóa Học Vue JS - V-on</title>
+</head>
+<body>
+    <div id="obj">
+        <p>Bấm Nút để tăng giá trị</p>
+        <button v-on:click="tanggiatri">Press</button>
+        <p>Giá Trị: {{ dem }}</p>
+    </div>
+    <script>
+        new Vue({
+            el: '#obj',
+            data: {
+                dem: 0
+            },
+            methods: {
+                tanggiatri:function(){
+                    this.dem++;
+                }
+            },
+        })
+    </script>
+</body>
+</html>

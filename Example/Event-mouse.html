@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../Js/vue.js"></script>
+    <title>Khóa Học Vue JS - Event-continue</title>
+</head>
+<body>
+    <div id="obj">
+        <p>Tùy biến đối tượng Event</p>
+        <div v-on:mousemove="toadochuot">
+            <p>Tọa độ chuột {{x}}/{{y}}</p>
+            <span v-on:mousemove="dungchuot">Dừng sự kiện</span>
+            <!-- or <span v-on:mousemove.stop="">Dừng sự kiện</span> -->
+        </div>
+        
+    </div>
+    <script>
+        new Vue({
+            el: '#obj',
+            data() {
+                return {
+                    x: 0,
+                    y: 0
+                }
+            },
+            methods: {
+                toadochuot:function(Event){
+                    this.x = Event.clientX;
+                    this.y = Event.clientY;
+                }, 
+                dungchuot:function(Event){
+                    Event.stopPropagation();//dừng diễn biến của Event:mouseover
+                }               
+            },
+        })
+    </script>
+</body>
+</html>

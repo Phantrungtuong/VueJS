@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../Js/vue.js"></script>
+    <title>Khóa Học Vue JS - Bind Data in VueJs</title>
+</head>
+<body>
+    <div id="obj">
+        <!-- V-model="data": làm cho tất cả vùng nào có data thay đổi. có hiệu lực mang tính chất toàn cục -->
+        <input type="text" v-model="name">
+        <p>{{name}}</p>
+    </div>
+    <script>
+        new Vue({
+            el: '#obj',
+            data() {
+                return {
+                    name: ''
+                }
+            },
+            methods: {
+                
+            },
+        })
+    </script>
+</body>
+</html>

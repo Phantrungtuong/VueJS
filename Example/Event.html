@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../Js/vue.js"></script>
+    <title>Khóa Học Vue JS - Event</title>
+</head>
+<body>
+    <div id="obj">
+        <p v-on:mousemove="tinhtoado">Tọa độ chuột {{x}}/{{y}}</p>
+    </div>
+    <script>
+        new Vue({
+            el: '#obj',
+            data() {
+                return {
+                   x: 0,
+                   y: 0  
+                }
+            },
+            methods: {
+                tinhtoado:function(Event){
+                    this.x = Event.clientX;
+                    this.y = Event.clientY; 
+                }
+            },
+        })
+    </script>
+</body>
+</html>
