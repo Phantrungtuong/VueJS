@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../Js/vue.js"></script>
+    <title>Khóa Học Vue JS - Keep Track</title>
+</head>
+<body>
+    <div id="obj">
+        <p v-for="item in array">{{item.id}}.{{item.title}}</p>
+        <button v-on:click="add">Press</button>
+        <!-- <input type="text" v-model="vmtitle" v-on:keyup.enter="add"> -->
+    </div>
+    <script>
+        new Vue({
+            el: '#obj',
+            data() {
+                return {
+                    vmtitle: '',
+                    addid: '1',
+                    array: [
+                        {id: 0, title: 'Title 1'}
+                    ]
+                }
+            },
+            computed: {
+                
+            },
+            methods: {
+                add() {
+                    this.array.push({
+                        id: this.addid++,
+                        title: this.array.title
+                    })
+                    // this.vmtitle = ''
+                }
+            },
+        })
+    </script>
+</body>
+</html>

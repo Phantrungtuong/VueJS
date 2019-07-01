@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../Js/vue.js"></script>
+    <title>Khóa Học Vue JS - Interaction between Components</title>
+</head>
+<body>
+    <div id="obj">
+        <div>
+            <h2>Parent</h2>
+                <p>Tên: {{ name }}</p>
+                <p>Tuổi: {{ age }}</p>
+            <!-- Giao tiếp giữa các component thông qua parent ( bắt buộc : Undirection data flow) -->
+            <h2>Child Detail</h2>
+                <childdetail-item v-bind:agechild="age" @updateAge="age = $event"></childdetail-item>
+                <button v-on:click="changeAge">Đổi tuổi</button>
+            <h2>Child Edit</h2>
+                <childedit-item v-bind:childage="age" @editAge="age = $event"></childedit-item>
+                <input type="text" id="txtage" v-on:keyup.enter="editAge" >
+            <!-- Giao tiếp trực tiếp giữa 2 component không thông qua parent -->
+                <!-- <input type="text" id="txtage" v-on:keyup.enter="editAgeBus" > -->
+        </div>
+    </div>
+    <script>
+        // export const eventBus = new Vue()
+
+        Vue.component('childdetail-item',{
+            props: ['agechild'],
+            template: '<div>\
+                            <p>Tuổi: {{agechild}}</p>\
+                        </div>'
+        })
+        Vue.component('childedit-item', {
+            props: ['childage'],
+            template: '<div>\
+                            <p>Tuổi: {{childage}}</p>\
+                        </div>'
+        })
+        new Vue({
+            el: '#obj',
+            data() {
+                return {
+                    name: 'Tưởng',
+                    age: 24,
+                }
+            },
+            methods: {
+                changeAge: function(){
+                    this.age = 25,
+                    this.$emit('updateAge', this.age)
+                },
+                editAge: function(){
+                    this.age = document.getElementById("txtage").value,
+                    this.$emit('editAge', this.age)
+                },
+                // editAgeBus: function(){
+                //     this.age = document.getElementById("txtage").value,
+                //     eventBus.$emit('editAge',this.age)
+                // }
+            },
+        })
+    </script>
+</body>
+</html>

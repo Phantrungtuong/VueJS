@@ -5,26 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="../Js/vue.js"></script>
-    <script src="../Js/axios.min.js"></script>
-    <script src="../Js/vue-router.js"></script>
-    <title>Khóa Học Vue JS</title>
+    <title>Khóa Học Vue JS - Watch</title>
 </head>
 <body>
+    <!-- Watch: theo dõi biến thay đổi.  -->
     <div id="obj">
-
+        <p>{{diem}}</p>
     </div>
     <script>
-        new Vue({
+        var app = new Vue({
             el: '#obj',
             data() {
                 return {
-                    
+                  diem: 'Điểm toán: 7'  
+                }
+            },
+            watch: {
+                diem:function(newValue){
+                    alert('đã có người thay đổi điểm của bạn');
                 }
             },
             methods: {
                 
             },
+        
         })
+        app.diem='Điểm toán: 8';
     </script>
 </body>
 </html>

@@ -5,20 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="../Js/vue.js"></script>
-    <script src="../Js/axios.min.js"></script>
-    <script src="../Js/vue-router.js"></script>
     <title>Khóa Học Vue JS</title>
 </head>
 <body>
     <div id="obj">
-
+        <button v-on:click="check = !check">Show</button>
+        <p v-show="check">Test V-Show</p>
     </div>
     <script>
         new Vue({
             el: '#obj',
             data() {
                 return {
-                    
+                    check: false
                 }
             },
             methods: {

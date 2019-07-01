@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../Js/vue.js"></script>
+    <title>Khóa Học Vue JS - Interactive with CSS</title>
+    <style>
+        .div{
+            width: 200px;
+            height: 200px;
+            background-color: black;
+            float: left;
+            margin-right: 30px
+        }
+        .red{
+            background-color: red;
+        }
+        .blue{
+            background-color: blue;
+        }
+        .white{
+            background-color: white;
+        }
+        .pink{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="obj">
+        <div class="div" @click="manageRed = !manageRed" :class="{red: manageRed}"></div>
+        <!-- sử dụng với computed với div thứ 3 mà thôi, không gây ảnh hưởng tới 2 div trên-->
+        <div class="div" :class="color"></div>
+        <input type="text" v-model="color">
+        <input type="text" v-model="widths">
+        <input type="text" v-model="heights">
+        
+        <!-- sử dụng inline css -->
+        <div class="div" :style="{backgroundColor: color}"></div>
+        <div class="div"  :style="customStyle"></div>
+    </div>
+    <script>
+        new Vue({
+            el: '#obj',
+            data() {
+                return {
+                    manageRed: false,
+                    color: 'red',
+                    widths: 200,
+                    heights: 200,
+
+                }
+            },
+            computed: {
+                customStyle: function(){
+                    return{
+                        backgroundColor: this.color,
+                        width: this.widths + 'px',
+                        height: this.heights + 'px'
+                    }
+                }
+
+            },
+            methods: {
+                
+            },
+        })
+    </script>
+</body>
+</html>

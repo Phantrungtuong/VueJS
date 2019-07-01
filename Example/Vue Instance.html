@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../Js/vue.js"></script>
+    <title>Khóa Học Vue JS</title>
+</head>
+<body>
+    <div id="obj">
+        <h3>{{title}}</h3>
+        <h3>After computed: {{lowercaseTitle}}</h3>
+        <button v-on:click="show">Press</button>
+        <h4 v-if="showParagraph">Trong rất nhiều trường hợp, chúng ta cần gọi event.preventDefault() hoặc event.stopPropagation() bên trong một phương thức xử lí sự kiện. Tuy việc này không có gì khó, sẽ tốt hơn nếu các phương thức chỉ phải tập trung giải quyết logic dữ liệu thay vì cáng đáng các sự kiện DOM.</h4>
+    </div>
+    <script>
+        new Vue({
+            el: '#obj',
+            data() {
+                return {
+                   title: 'VueJS Instance',
+                   showParagraph: false
+                }
+            },
+            computed: {
+                lowercaseTitle: function(){
+                    return this.title.toLowerCase();
+                }
+            },
+            methods: {
+                show: function(){
+                    this.showParagraph = true,
+                    this.updateTitle = 'VueJS Instance Update'
+                },
+                updateTitle: function(titles){
+                    this.title = titles
+                }
+            },
+            watch: {
+                title: function(value){
+                    alert('Title Change, new value' + value)
+                }
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../Js/vue.js"></script>
+    <script src="../Js/axios.min.js"></script>
+    <title>Khóa Học Vue JS</title>
+</head>
+<body>
+    <div id="obj">
+        <div v-for="post in results">
+            <h4>{{ post.title }} </h4><i>{{post.pubDate}}</i>
+            <p>{{ post.description }}</p>
+            <!-- <p v-html="post.description"></p> -->
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#obj',
+            data() {
+                return {
+                    results: []
+                }
+            },
+            methods: {
+                
+            },
+            mounted() {
+                axios({
+                    method: 'GET',
+                    url: 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fdantri.com.vn%2Ftrangchu.rss',
+                    data: null
+                })
+                .then(res => {
+                    console.log(res);
+                    this.results = res.data.items;
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+                // axios.get('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fdantri.com.vn%2Ftrangchu.rss')
+                // .then(response => {
+                //     this.results = response.data.items
+                //     console.log(this.results[0].link)
+                // });
+            },  
+        })
+    </script>
+</body>
+</html

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../Js/vue.js"></script>
+    <title>Khóa Học Vue JS</title>
+</head>
+<body>
+    <div id="obj">
+        <p>Món ngon mẹ làm</p>
+        <ol>
+            <todo-item
+                v-for="item in groceryList" 
+                v-bind:todo ="item"
+                v-bind:key ="item.id">
+                <!-- v-for: load toàn bộ data trong data() -->
+                <!-- v-bind:todo = "" : đọc toàn bộ data theo thuộc tính tùy biến todo (props: ['todo'])  -->
+                <!-- v-bind:key = "" : đọc data theo key ???? -->
+            </todo-item>
+        </ol>
+    </div>
+    <script>
+        Vue.component('todo-item', {
+            props:['todo'],
+            template: '<li> {{ todo.text }}</li>'
+        })
+        new Vue({
+            el: '#obj',
+            data() {
+                return {
+                    groceryList: [
+                        {id: 0, text: 'Cà pháo'},
+                        {id: 1, text: 'Canh cua'},
+                        {id: 3, text: 'Cơm niêu',}
+                    ]
+                }
+            },
+            methods: {
+                
+            },
+        })
+    </script>
+</body>
+</html>

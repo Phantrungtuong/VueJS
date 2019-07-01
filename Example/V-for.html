@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../Js/vue.js"></script>
+    <title>Khóa Học Vue JS - V-for</title>
+</head>
+<body>
+    <div id="obj">
+        <input type="text" v-model="addWork" v-on:keyup.enter="them">
+        <ul>
+            <li is="todo-item"
+                v-for="(item, index) in todos"
+                v-bind:key="item.id"
+                v-bind:todo="item"
+                v-bind:todo="index"
+                v-on:remove="todos.splice('index', 1)"
+            ></li>
+        </ul>
+
+        <item-div 
+            v-for="(item, index) in divs"
+            v-bind:key="item.id"
+            v-bind:div="item"
+        ></item-div>
+
+    </div>
+    <script>
+        Vue.component('todo-item',{
+            props: ['todo'],
+            template: '<li>{{todo.title}} <button v-on:click="$emit(\'remove\')">X</button></li>',
+        })
+        Vue.component('item-div',{
+            props: ['div'],
+            template: '<div><p>{{ div.content }}</p></div>'
+        })
+        new Vue({
+            el: '#obj',
+            data() {
+                return {
+                   addWork: '',
+                   todos: [
+                       {id: 1, title: 'Nấu cơm'}
+                   ], 
+                    nextID: 2,
+                   divs: [
+                       {id: 0, content: 'Content 0'},
+                       {id: 1, content: 'Content 1'},
+                       {id: 2, content: 'Content 2'},
+                       {id: 3, content: 'Content 3'},
+                       {id: 4, content: 'Content 4'},
+                       {id: 5, content: 'Content 5'},
+                       {id: 6, content: 'Content 6'},
+                   ] 
+                }
+            },
+            computed: {
+                them:function(){
+                    this.todos.push({
+                        id: this.nextID++,
+                        title: this.addWork
+                    })
+                    this.addWork = ''
+                }
+            },
+            methods: {
+                
+            },
+        })
+    </script>
+</body>
+</html>

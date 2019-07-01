@@ -5,20 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="../Js/vue.js"></script>
-    <script src="../Js/axios.min.js"></script>
-    <script src="../Js/vue-router.js"></script>
-    <title>Khóa Học Vue JS</title>
+    <title>Khóa Học Vue JS - V-if</title>
 </head>
 <body>
     <div id="obj">
-
+        <p>Are you ok</p><button v-on:click="check = !check">Yes/No</button>
+        <p v-if="check">Yes. I'm OK</p>
+        <p v-else>I'm very Tirer</p>
+        <template v-if="check">
+            <div>menu 1</div>
+            <div>menu 1</div>
+            <div>menu 1</div>
+            <div>menu 1</div>
+            <div>menu 1</div>   
+        </template>    
+        
     </div>
     <script>
         new Vue({
             el: '#obj',
             data() {
                 return {
-                    
+                    check: true
                 }
             },
             methods: {
