@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../Js/vue.js"></script>
+    <script src="../Js/axios.min.js"></script>
+    <script src="../Js/vue-router.js"></script>
+    <title>Khóa Học Vue JS</title>
+</head>
+<body>
+    <div id="obj">
+        <h1>{{title}}</h1>
+    </div>
+    <div id="obj2">
+        <h1>{{title}}</h1>
+        <button v-on:click="onChangeTitle">Change Title in First VueJs Instance </button>
+    </div>
+    <script>
+        //chúng ta có thể truy cập VueJs instance từ bên ngoài
+        var app = new Vue({
+            el: '#obj',
+            data() {
+                return {
+                    title: 'The First VueJs Instance'
+                }
+            },
+            methods: {
+                
+            },
+            computed: {
+                
+            },
+            watch: {
+                title: function(value){
+                    alert('Title change, new value: '+value);   
+                }  
+            },
+        });
+        
+        var app2 = new Vue({
+            el: '#obj2',
+            data() {
+                return {
+                    title: 'The Second VueJs Instance'
+                }
+            },
+            methods: {
+                onChangeTitle: function(){
+                    //có thể truy cập từ instance khác
+                    app.title = app2.title;
+                }
+            },
+            computed: {
+                
+            },
+            watch: {
+                
+            },
+        });
+
+        setTimeout(function(){
+            app.title = 'The First VueJs Instance change after 3 seconds'    
+        }, 3000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../Js/vue.js"></script>
+    <script src="../Js/axios.min.js"></script>
+    <script src="../Js/vue-router.js"></script>
+    <title>Khóa Học Vue JS</title>
+</head>
+<body>
+    <div id="obj">
+        <h1>{{title}}</h1>
+        <h1>After Computed: {{lowercaseTitle}}</h1>
+        <button v-on:click="show">Show</button>
+        <p v-if="showParagraph">Hello word</p>
+    </div>
+    <div id="obj2">
+        <h1>{{title}}</h1>
+    </div>
+    <script>
+        //chúng ta có thể tạo được nhiều intance
+        //các instance chạy riêng rẽ và không liên quan tới nhau
+        new Vue({
+            el: '#obj',
+            data() {
+                return {
+                    title: "The first VueJs Intance",
+                    showParagraph: false
+                }
+            },
+            methods: {
+                show: function(){
+                    this.showParagraph = true;
+                    this.updateTitle ("This VueJs  Instance Update");
+                },
+                updateTitle: function(title){
+                    this.title = title;
+                }
+            },
+            computed: {
+                lowercaseTitle: function(){
+                    return this.title.toLowerCase();
+                }
+            },
+            watch: {
+                title: function(value){
+                    alert('Title changed, new value: '+value);
+                }
+            },
+        });
+
+        new Vue({
+            el: "#obj2",
+            data(){
+                return{
+                    title: "The second VueJs Intance"
+                }
+            },
+            methods:{
+
+            },
+            computed:{
+
+            },
+            watch:{
+
+            }
+        })
+    </script>
+</body>
+</html>
